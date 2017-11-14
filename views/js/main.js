@@ -457,7 +457,7 @@ var resizePizzas = function(size) {
       /* Again let's console.log() dx and newwidth and see how crucial these numbers are that need to be calculated inside the For Loop */
       var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
       var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      // console.log(dx, newwidth);
+       console.log(dx, newwidth);
 
       document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
     }
@@ -526,7 +526,7 @@ function updatePositions() {
     */
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     // Let's log out all these numbers and see!
-    // console.log(phase, document.body.scrollTop / 1250)
+     console.log(phase, document.body.scrollTop / 1250)
 
     /* Using style.left, is there a more efficient way to change the position of this object?
        It looks like the Layout gets re-triggered everytime we scroll. Remember how the browser renders our objects?
