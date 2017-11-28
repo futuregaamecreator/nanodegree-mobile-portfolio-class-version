@@ -449,7 +449,14 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
+    // instead of accessing the DOM multiple times grab .randomPizzaContainer just once
+
+    //var pizzaElems = document.querySelectorAll...
+    // is there a more performant DOM method than querySelectorAll?
+    // could it be a good idea to cache the length of the pizzaElems collection?
+
     for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
+      // what's the use of dx? do we really need dx?
       var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
       var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
       document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
@@ -503,10 +510,10 @@ function updatePositions() {
 
 //phases to make loop easier
   var phases = [];
-    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop / 1250;
+    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
   var items = document.querySelectorAll('.mover');
   for (var i = 0; i < 5; i++) {
-    phases.push(100 * Math.sin(scrollTop + i));
+    phases.push(100 * Math.sin(scrollTop / 1250 + i));
     }
     // set phases
     for (i = 0; i < items.length; i++) {
@@ -522,7 +529,6 @@ function updatePositions() {
       logAverageFrame(timesToUpdatePosition);
     }
   }
-
   // runs updatePositions on scroll with requestAnimationFrame
   window.addEventListener('scroll', function() {
     window.requestAnimationFrame(updatePositions);
