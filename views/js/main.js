@@ -449,17 +449,17 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    // instead of accessing the DOM multiple times grab .randomPizzaContainer just once
-
-    //var pizzaElems = document.querySelectorAll...
-    // is there a more performant DOM method than querySelectorAll?
-    // could it be a good idea to cache the length of the pizzaElems collection?
-
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      // what's the use of dx? do we really need dx?
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    var pizzaContainerLength = document.getElementsByClassName("randomPizzaContainer").length;
+    // Sets randomPizzaContainer before the for loop to save repeated processing
+    var randomPizzaContainer = document.getElementsByClassName("randomPizzaContainer");
+    var newwidth = [];
+    for (var i = 0; i < pizzaContainerLength; i++) {
+      var dx = determineDx(randomPizzaContainer[i], size);
+      newwidth[i] = (randomPizzaContainer[i].offsetWidth + dx) + 'px';
+    }
+    // Created a new for loop to set the styles of the containers prevent the browser from having to rerender and paint so much.
+    for (var i = 0; i < pizzaContainerLength; i++) {
+     randomPizzaContainer[i].style.width = newwidth[i];
     }
   }
 
