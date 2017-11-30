@@ -423,7 +423,6 @@ var resizePizzas = function(size) {
 
    // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
 
-
     var newSize = sizeSwitcher(size);
     var dx = (newSize - oldSize) * windowWidth;
 
@@ -457,6 +456,7 @@ var resizePizzas = function(size) {
       }
     }
   changePizzaSizes(size);
+
   // User Timing API is awesome
   window.performance.mark("mark_end_resize");
   window.performance.measure("measure_pizza_resize", "mark_start_resize", "mark_end_resize");
