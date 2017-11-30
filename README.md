@@ -22,4 +22,5 @@ Changes to views/js/main.js
 6.Broke loops up into 2 loops updatePositions function to reduce work in DOM
 7.Moved movingPizzas1 variable out of for loop to reduce work in the for loop
 8.Reduced Pizza count to 32 instead of 200
-
+9. Ran JS Formatter in atom
+10. Uploaded optimized pizza image
